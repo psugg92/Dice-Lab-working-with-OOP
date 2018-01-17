@@ -10,26 +10,22 @@ class Die {
     }
 
     rollDice() {
-        for(let i = 1;i <= diceCounter; i++) {
-            let num = (Math.floor(Math.random * 6) + 1);
+        for(let i = 1;i <= diceCounter;i++) {
+            let num = (Math.floor(Math.random() * 6) +1);
             console.log(num);
-            console.log(diceCounter);
             $(`#${i}`).text(`${num}`);
         }
     }
 
 }
 
-let rolling = new Die(diceCounter);
-
 $('#DieGen').click(function() {
     diceCounter++
+    let rolling = new Die(diceCounter);
     rolling.createDiv();
-    console.log(diceCounter);
+
+    $('#RollDice').click(function() {
+        rolling.rollDice();
+    })
 
 });
-
-$('#RollDice').click(function() {
-    rolling.rollDice();
-});
-
